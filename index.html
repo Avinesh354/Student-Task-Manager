@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">STM</div>
+      <div>
+        <h1>Student Task Manager</h1>
+        <div class="small">Add tasks, track progress & get simple reminders</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left: Main -->
+      <div>
+        <div class="card">
+          <form id="taskForm">
+            <div class="form-row">
+              <input id="title" placeholder="Task title (required)" required />
+              <select id="statusSelect">
+                <option>Pending</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <textarea id="description" placeholder="Description (optional)"></textarea>
+            </div>
+
+            <div class="row">
+              <input id="deadline" type="datetime-local" />
+              <button class="btn" type="submit">Add Task</button>
+              <button type="button" id="clearBtn" class="btn ghost">Clear All</button>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <div id="progressText">0/0 tasks completed (0%)</div>
+                <div class="small" id="remainingText"></div>
+              </div>
+              <div class="bar-bg"><div class="bar-fill" id="barFill"></div></div>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="task-header">
+            <div class="small">Tasks</div>
+            <div class="small">Auto-reminders checked every 30s</div>
+          </div>
+
+          <div class="controls">
+            <select id="filterStatus">
+              <option value="">All</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+
+            <select id="sortBy">
+              <option value="deadline">Sort by deadline (earliest)</option>
+              <option value="createdAt">Newest first</option>
+            </select>
+          </div>
+
+          <ul class="task-list" id="taskList"></ul>
+          <div id="empty" class="empty">No tasks yet. Add your first task!</div>
+        </div>
+      </div>
+
+      <!-- Right: Tips / small card -->
+      <aside>
+        <div class="card">
+          <h3>Quick Tips</h3>
+          <ul class="small">
+            <li>Use clear titles & deadlines to let reminders work.</li>
+            <li>Mark tasks "In Progress" while working — progress bar updates automatically.</li>
+            <li>Tasks are saved to your browser (localStorage).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Controls</h3>
+          <div class="small">
+            <div><strong>Complete</strong> toggles between Completed / Pending</div>
+            <div><strong>Delete</strong> removes permanently</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
